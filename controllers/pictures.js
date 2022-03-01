@@ -13,7 +13,7 @@ const editPicture = (req, res) => {
   res.json({edit:id, status: "success"});
 };
 const deletePicture = (req, res) => {
-  res.send("All pictures");
+  res.send("Delete");
 };
 
 export { getAllPics, uploadPicture, editPicture, deletePicture, getPicture };
