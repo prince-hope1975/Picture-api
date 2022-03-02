@@ -5,6 +5,7 @@ import { router } from "./routes/pics.js";
 
 import { connectToMongo } from "./db/conn.js";
 const app = express();
+const port = process.env.PORT;
 
 // Enabling Environment variables
 dotenv.config();
@@ -20,9 +21,12 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/pictures", router);
 
-
 const connectToDeviceServer = (err) => {
-  app.listen(port, () => console.log(`Hello im connected to port: ${port}`));
+  try {
+    app.listen(port, () => console.log(`Hello im connected to port: ${port}`));
+  } catch (e) {
+    console.error("Failed to start server: ", e);
+  }
 };
 
 connectToMongo(connectToDeviceServer);
